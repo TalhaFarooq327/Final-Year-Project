@@ -34,10 +34,14 @@ const QuickInsight = () => {
       <div className="container">
         <div className={`insight__inner ${visible ? 'insight__inner--visible' : ''}`}>
           <div className="insight__left">
+<<<<<<< HEAD
             <div className="section-badge" style={{ color: '#0BC5EA', borderColor: 'rgba(11,197,234,0.25)', background: 'rgba(11,197,234,0.08)' }}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
               Quick Insight
             </div>
+=======
+
+>>>>>>> 38ef449 ( updated UI)
             <h2 className="section-title">
               What do you know in<br />
               <span className="insight__timer">
@@ -50,7 +54,11 @@ const QuickInsight = () => {
             </p>
             <a href="#" className="btn-primary insight__cta" id="insight-cta-btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
                 <path d="M5 3l14 9-14 9V3z" fill="white"/>
+=======
+                <path d="M5 3l14 9-14 9V3z" fill="white" />
+>>>>>>> 38ef449 ( updated UI)
               </svg>
               Start Analysis Now
             </a>
@@ -60,10 +68,17 @@ const QuickInsight = () => {
             <div className="insight__timeline">
               {[
                 { time: '0s', label: 'Image uploaded', done: true, color: '#3182CE' },
+<<<<<<< HEAD
                 { time: '0.4s', label: 'Pre-processing image', done: true, color: '#0BC5EA' },
                 { time: '1.1s', label: 'Running ResNet-50 model', done: true, color: '#38A169' },
                 { time: '1.8s', label: 'Analyzing skin patterns', done: true, color: '#805AD5' },
                 { time: '< 2s', label: 'Prediction ready ✓', done: true, color: '#F6AD55', highlight: true },
+=======
+                { time: '15s', label: 'Pre-processing image', done: true, color: '#0BC5EA' },
+                { time: '30s', label: 'Running ResNet-50 model', done: true, color: '#38A169' },
+                { time: '45s', label: 'Analyzing skin patterns', done: true, color: '#805AD5' },
+                { time: '< 60s', label: 'Prediction ready ✓', done: true, color: '#F6AD55', highlight: true },
+>>>>>>> 38ef449 ( updated UI)
               ].map((item, i) => (
                 <div
                   key={i}

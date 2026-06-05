@@ -9,7 +9,11 @@ const stats = [
     label: 'AI Predictions Made',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+=======
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+>>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     color: '#3182CE',
@@ -19,12 +23,21 @@ const stats = [
   {
     id: 'stat-response',
     value: 2,
+<<<<<<< HEAD
     display: '< 2s',
     label: 'Average Response Time',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
         <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+=======
+    display: '< 1min',
+    label: 'Average Response Time',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+        <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+>>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     color: '#0BC5EA',
@@ -38,8 +51,13 @@ const stats = [
     label: 'Model Accuracy',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
         <path d="M22 11.08V12C22 17.52 17.52 22 12 22S2 17.52 2 12 6.48 2 12 2c1.88 0 3.64.52 5.14 1.42" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
         <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+=======
+        <path d="M22 11.08V12C22 17.52 17.52 22 12 22S2 17.52 2 12 6.48 2 12 2c1.88 0 3.64.52 5.14 1.42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+>>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     color: '#38A169',
@@ -53,9 +71,15 @@ const stats = [
     label: 'Active Users',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
         <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
         <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2"/>
         <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+=======
+        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" />
+        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+>>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     color: '#805AD5',
@@ -134,10 +158,14 @@ const Statistics = () => {
 
       <div className="container">
         <div className="stats__header">
+<<<<<<< HEAD
           <div className="section-badge" style={{ color: '#0BC5EA', borderColor: 'rgba(11,197,234,0.25)', background: 'rgba(11,197,234,0.08)' }}>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
             Platform Statistics
           </div>
+=======
+
+>>>>>>> 38ef449 ( updated UI)
           <h2 className="section-title" style={{ color: 'white' }}>
             Numbers That<br />
             <span style={{ background: 'linear-gradient(135deg, #63B3ED, #76E4F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
@@ -157,8 +185,13 @@ const Statistics = () => {
 
         <div className={`stats__note ${visible ? 'stats__note--visible' : ''}`}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)">
+<<<<<<< HEAD
             <circle cx="12" cy="12" r="10"/>
             <path d="M12 8v4M12 16h.01" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+=======
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4M12 16h.01" stroke="white" strokeWidth="2" strokeLinecap="round" />
+>>>>>>> 38ef449 ( updated UI)
           </svg>
           Statistics based on internal model benchmarks and platform usage data.
         </div>

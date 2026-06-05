@@ -5,8 +5,13 @@ const points = [
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
         <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+=======
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+        <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+>>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     title: '24/7 Availability',
@@ -16,18 +21,31 @@ const points = [
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
     title: 'Fast Screening Tool',
     desc: 'Delivers preliminary psoriasis risk results in under 2 seconds — faster than any traditional diagnostic process.',
+=======
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    title: 'Fast Screening Tool',
+    desc: 'Delivers preliminary psoriasis risk results in under 60 seconds — faster than any traditional diagnostic process.',
+>>>>>>> 38ef449 ( updated UI)
     color: '#0BC5EA',
   },
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
         <path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+=======
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+        <path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+>>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     title: 'Reduces Delay in Diagnosis',
@@ -37,8 +55,13 @@ const points = [
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2"/>
         <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+=======
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" />
+        <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+>>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     title: 'Accessible from Anywhere',
@@ -48,7 +71,11 @@ const points = [
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
         <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" strokeWidth="2"/>
+=======
+        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" strokeWidth="2" />
+>>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     title: 'Patient-Centred Design',
@@ -58,7 +85,11 @@ const points = [
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+=======
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+>>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     title: 'ResNet-Based AI Model',
@@ -74,7 +105,11 @@ const AIDermatologist = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setVisible(true); },
+<<<<<<< HEAD
       { threshold: 0.1 }
+=======
+      { threshold: 0.05 }
+>>>>>>> 38ef449 ( updated UI)
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -89,12 +124,17 @@ const AIDermatologist = () => {
 
       <div className="container">
         <div className="ai-derm__header">
+<<<<<<< HEAD
           <div className="section-badge">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             AI Dermatologist
           </div>
           <h2 className="section-title">
             Why is AI Dermatologist<br />
+=======
+          <h2 className="section-title">
+            Why is Psoriasis AI <br />
+>>>>>>> 38ef449 ( updated UI)
             <span className="text-gradient">Worth Using?</span>
           </h2>
           <p className="section-subtitle">
@@ -119,7 +159,11 @@ const AIDermatologist = () => {
               </div>
               <div className="ai-derm__card-arrow" style={{ color: p.color }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
                   <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+=======
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+>>>>>>> 38ef449 ( updated UI)
                 </svg>
               </div>
             </div>
@@ -135,7 +179,11 @@ const AIDermatologist = () => {
           <a href="#" className="btn-primary" id="ai-derm-cta-btn">
             Start Free Analysis
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+<<<<<<< HEAD
               <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+=======
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+>>>>>>> 38ef449 ( updated UI)
             </svg>
           </a>
         </div>

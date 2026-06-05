@@ -11,13 +11,21 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+<<<<<<< HEAD
+=======
+  z-index: 0;
+>>>>>>> 38ef449 ( updated UI)
 }
 
 .ai-derm__bg-blob {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
+<<<<<<< HEAD
   opacity: 0.04;
+=======
+  opacity: 0.10;
+>>>>>>> 38ef449 ( updated UI)
 }
 
 .ai-derm__bg-blob--1 {
@@ -36,6 +44,11 @@
   text-align: center;
   max-width: 640px;
   margin: 0 auto 64px;
+<<<<<<< HEAD
+=======
+  position: relative;
+  z-index: 2;
+>>>>>>> 38ef449 ( updated UI)
 }
 
 .ai-derm__header .section-subtitle {
@@ -47,6 +60,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-bottom: 48px;
+<<<<<<< HEAD
+=======
+  position: relative;
+  z-index: 2;
+>>>>>>> 38ef449 ( updated UI)
 }
 
 .ai-derm__card {
@@ -131,6 +149,11 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.7s ease 0.4s, transform 0.7s ease 0.4s;
+<<<<<<< HEAD
+=======
+  position: relative;
+  z-index: 2;
+>>>>>>> 38ef449 ( updated UI)
 }
 
 .ai-derm__cta--visible {
