@@ -125,14 +125,7 @@ const Hero = () => {
       <div className="container hero__container">
         {/* ── Left: Text ── */}
         <div className={`hero__content ${visible ? 'hero__content--visible' : ''}`}>
-<<<<<<< HEAD
-          <div className="hero__badge">
-            <span className="hero__badge-dot" />
-            AI-Powered Dermatology
-          </div>
-=======
 
->>>>>>> 38ef449 ( updated UI)
 
           <h1 className="hero__title">
             Detect <span className="text-gradient">Psoriasis</span>
@@ -140,13 +133,8 @@ const Hero = () => {
           </h1>
 
           <p className="hero__subtitle">
-<<<<<<< HEAD
-            Upload a photo of your skin and get a clinical-grade analysis in under&nbsp;2&nbsp;seconds.
-            Powered by deep learning trained on 500,000+ dermatology images.
-=======
             Upload a photo of your skin and get a clinical-grade analysis in under&nbsp;1&nbsp;minute.
             Powered by deep learning trained on 60,000+ dermatology images.
->>>>>>> 38ef449 ( updated UI)
           </p>
 
           <div className="hero__cta">
@@ -168,24 +156,7 @@ const Hero = () => {
             </a>
           </div>
 
-<<<<<<< HEAD
-          <div className="hero__trust">
-            <div className="hero__trust-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#22c55e"><path d="M22 11.08V12C22 17.52 17.52 22 12 22S2 17.52 2 12 6.48 2 12 2" stroke="#22c55e" strokeWidth="2" /><polyline points="22 4 12 14.01 9 11.01" stroke="#22c55e" strokeWidth="2" /></svg>
-              No sign-up needed
-            </div>
-            <div className="hero__trust-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#22c55e" strokeWidth="2" /></svg>
-              HIPAA-compliant
-            </div>
-            <div className="hero__trust-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#22c55e" strokeWidth="2" /><path d="M12 6v6l4 2" stroke="#22c55e" strokeWidth="2" /></svg>
-              Results in &lt;2 sec
-            </div>
-          </div>
-=======
 
->>>>>>> 38ef449 ( updated UI)
 
           {/* Mini stat row */}
           <div className="hero__stats-row">
@@ -212,17 +183,7 @@ const Hero = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
-      {/* Scroll indicator */}
-      <div className="hero__scroll">
-        <div className="hero__scroll-mouse">
-          <div className="hero__scroll-wheel" />
-        </div>
-        <span>Scroll to explore</span>
-      </div>
-=======
 
->>>>>>> 38ef449 ( updated UI)
     </section>
   );
 };

@@ -1,48 +1,28 @@
 /* ===== REVIEWS ===== */
 
 .reviews {
-<<<<<<< HEAD
-  padding: 100px 0;
-=======
   padding: 100px 0 80px;
->>>>>>> 38ef449 ( updated UI)
   background: var(--bg-light);
   position: relative;
   overflow: hidden;
 }
 
-<<<<<<< HEAD
-=======
 /* Background */
->>>>>>> 38ef449 ( updated UI)
 .reviews__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
-<<<<<<< HEAD
-=======
   z-index: 0;
->>>>>>> 38ef449 ( updated UI)
 }
 
 .reviews__bg-blob {
   position: absolute;
   width: 800px; height: 600px;
-<<<<<<< HEAD
-  background: radial-gradient(ellipse, rgba(49,130,206,0.04), transparent 70%);
-=======
   background: radial-gradient(ellipse, rgba(49,130,206,0.06), transparent 70%);
->>>>>>> 38ef449 ( updated UI)
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
 }
 
-<<<<<<< HEAD
-.reviews__header {
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto 64px;
-=======
 /* Header */
 .reviews__header {
   text-align: center;
@@ -50,7 +30,6 @@
   margin: 0 auto 56px;
   position: relative;
   z-index: 2;
->>>>>>> 38ef449 ( updated UI)
 }
 
 .reviews__header .section-subtitle {
@@ -82,11 +61,7 @@
   gap: 3px;
 }
 
-<<<<<<< HEAD
-.reviews__stars {
-=======
 .review__stars {
->>>>>>> 38ef449 ( updated UI)
   display: flex;
   gap: 2px;
 }
@@ -97,23 +72,6 @@
   font-weight: 500;
 }
 
-<<<<<<< HEAD
-/* Grid */
-.reviews__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* Show 5 cards: first row 3, second row 2 centered */
-.reviews__card:nth-child(4) {
-  grid-column: 1;
-}
-.reviews__card:nth-child(5) {
-  grid-column: 2;
-}
-
-=======
 /* ── Infinite marquee ── */
 .reviews__marquee-wrapper {
   position: relative;
@@ -161,74 +119,42 @@
 }
 
 /* ── Review card ── */
->>>>>>> 38ef449 ( updated UI)
 .reviews__card {
   background: white;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-<<<<<<< HEAD
-  padding: 28px;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-=======
   padding: 26px 24px;
->>>>>>> 38ef449 ( updated UI)
   display: flex;
   flex-direction: column;
   gap: 14px;
   position: relative;
   overflow: hidden;
-<<<<<<< HEAD
-=======
   /* Fixed width for consistent card size in the row */
   width: 300px;
   flex-shrink: 0;
   transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
   cursor: default;
->>>>>>> 38ef449 ( updated UI)
 }
 
 .reviews__card::after {
   content: '';
   position: absolute;
   inset: 0;
-<<<<<<< HEAD
-  background: linear-gradient(135deg, rgba(49,130,206,0.02), transparent);
-=======
   background: linear-gradient(135deg, rgba(49,130,206,0.03), transparent);
->>>>>>> 38ef449 ( updated UI)
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-<<<<<<< HEAD
-.reviews__card:hover::after {
-  opacity: 1;
-}
-
-.reviews__card--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reviews__card:hover {
-  transform: translateY(-6px);
-=======
 .reviews__card:hover {
   transform: translateY(-4px);
->>>>>>> 38ef449 ( updated UI)
   box-shadow: var(--shadow-lg);
   border-color: rgba(49,130,206,0.15);
 }
 
-<<<<<<< HEAD
-=======
 .reviews__card:hover::after {
   opacity: 1;
 }
 
->>>>>>> 38ef449 ( updated UI)
 .reviews__card-top {
   display: flex;
   align-items: center;
@@ -236,20 +162,12 @@
 }
 
 .reviews__avatar {
-<<<<<<< HEAD
-  width: 44px; height: 44px;
-=======
   width: 42px; height: 42px;
->>>>>>> 38ef449 ( updated UI)
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
-  font-size: 14px;
-=======
   font-size: 13px;
->>>>>>> 38ef449 ( updated UI)
   font-weight: 700;
   flex-shrink: 0;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -257,18 +175,6 @@
 
 .reviews__user {
   flex: 1;
-<<<<<<< HEAD
-}
-
-.reviews__name {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-dark);
-}
-
-.reviews__role {
-  font-size: 12px;
-=======
   min-width: 0;
 }
 
@@ -283,7 +189,6 @@
 
 .reviews__role {
   font-size: 11px;
->>>>>>> 38ef449 ( updated UI)
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -293,24 +198,17 @@
 }
 
 .reviews__text {
-<<<<<<< HEAD
-  font-size: 14px;
-=======
   font-size: 13px;
->>>>>>> 38ef449 ( updated UI)
   color: var(--text-body);
   line-height: 1.7;
   font-style: italic;
   flex: 1;
-<<<<<<< HEAD
-=======
   /* clamp to 4 lines so all cards are uniform height */
   display: -webkit-box;
   -webkit-line-clamp: 4;
   line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
->>>>>>> 38ef449 ( updated UI)
 }
 
 .reviews__verified {
@@ -322,25 +220,9 @@
   font-weight: 600;
 }
 
-<<<<<<< HEAD
-@media (max-width: 1024px) {
-  .reviews__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .reviews__card:nth-child(4),
-  .reviews__card:nth-child(5) {
-    grid-column: auto;
-  }
-}
-
-@media (max-width: 640px) {
-  .reviews { padding: 72px 0; }
-  .reviews__grid { grid-template-columns: 1fr; }
-=======
 /* Responsive: slow down slightly on smaller screens */
 @media (max-width: 768px) {
   .reviews { padding: 72px 0 60px; }
   .reviews__marquee-track { animation-duration: 25s; }
   .reviews__card { width: 260px; }
->>>>>>> 38ef449 ( updated UI)
 }

@@ -6,15 +6,9 @@ const steps = [
     number: '01',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-<<<<<<< HEAD
-        <path d="M21 15V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <polyline points="17 8 12 3 7 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-=======
         <path d="M21 15V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <polyline points="17 8 12 3 7 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
->>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     title: 'Upload Skin Image',
@@ -26,15 +20,9 @@ const steps = [
     number: '02',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-<<<<<<< HEAD
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-        <path d="M12 8V12L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <circle cx="12" cy="12" r="2" fill="currentColor"/>
-=======
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
         <path d="M12 8V12L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         <circle cx="12" cy="12" r="2" fill="currentColor" />
->>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     title: 'AI Processes Your Image',
@@ -46,21 +34,12 @@ const steps = [
     number: '03',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-<<<<<<< HEAD
-        <path d="M9 11l3 3L22 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      </svg>
-    ),
-    title: 'Get Prediction Results',
-    desc: 'Receive an instant prediction indicating whether psoriasis signs are detected — all in under 2 seconds.',
-=======
         <path d="M9 11l3 3L22 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
     title: 'Get Prediction Results',
     desc: 'Receive an instant prediction indicating whether psoriasis signs are detected — all in under 1 minute.',
->>>>>>> 38ef449 ( updated UI)
     color: '#38A169',
     bg: 'rgba(56,161,105,0.08)',
   },
@@ -68,11 +47,7 @@ const steps = [
     number: '04',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-<<<<<<< HEAD
-        <path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-=======
         <path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
->>>>>>> 38ef449 ( updated UI)
       </svg>
     ),
     title: 'View Confidence Score & Guidance',
@@ -110,14 +85,7 @@ const HowItWorks = () => {
 
       <div className="container">
         <div className="how__header">
-<<<<<<< HEAD
-          <div className="section-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-            Simple Process
-          </div>
-=======
 
->>>>>>> 38ef449 ( updated UI)
           <h2 className="section-title">
             How to Check Your Skin in<br />
             <span className="text-gradient">4 Simple Steps</span>
