@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
+  const location  = useLocation();
+  const navigate  = useNavigate();
+  const isLanding = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -11,24 +15,37 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  /* Close mobile menu on route change */
+  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+
   const links = [
-    { label: 'Home', href: '#home' },
+    { label: 'Home',         href: '#home' },
     { label: 'How it Works', href: '#how-it-works' },
-    { label: 'About', href: '#about' },
-    { label: 'FAQs', href: '#faqs' },
+    { label: 'About',        href: '#about' },
+    { label: 'FAQs',         href: '#faqs' },
   ];
 
   const handleNavClick = (href) => {
     setMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (isLanding) {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      /* Navigate to landing page then scroll */
+      navigate('/');
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 400);
+    }
   };
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__container">
-        {/* Logo */}
-        <a className="navbar__logo" href="#home" onClick={() => handleNavClick('#home')}>
+
+        {/* Logo → always goes to landing page */}
+        <Link to="/" className="navbar__logo" id="navbar-logo">
           <div className="navbar__logo-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
               <path d="M12 2L3 7V12C3 16.55 6.84 20.74 12 22C17.16 20.74 21 16.55 21 12V7L12 2Z" fill="white" fillOpacity="0.9"/>
@@ -36,9 +53,9 @@ const Navbar = () => {
             </svg>
           </div>
           <span className="navbar__logo-text">
-            Psoriasis<span className="navbar__logo-accent"> AI</span>
+            Psoriasis<span className="navbar__logo-accent">AI</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Links */}
         <ul className="navbar__links">
@@ -57,8 +74,8 @@ const Navbar = () => {
 
         {/* Auth Buttons */}
         <div className="navbar__auth">
-          <a href="#" className="navbar__login">Login</a>
-          <a href="#" className="navbar__register">Register</a>
+          <Link to="/login"    className="navbar__login"    id="navbar-login-btn">Login</Link>
+          <Link to="/register" className="navbar__register" id="navbar-register-btn">Register</Link>
         </div>
 
         {/* Hamburger */}
@@ -85,8 +102,8 @@ const Navbar = () => {
           </a>
         ))}
         <div className="navbar__mobile-auth">
-          <a href="#" className="navbar__login">Login</a>
-          <a href="#" className="navbar__register">Register</a>
+          <Link to="/login"    className="navbar__login"    onClick={() => setMenuOpen(false)}>Login</Link>
+          <Link to="/register" className="navbar__register" onClick={() => setMenuOpen(false)}>Register</Link>
         </div>
       </div>
     </nav>
