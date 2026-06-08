@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './AIDermatologist.css';
 
 const points = [
@@ -128,12 +129,12 @@ const AIDermatologist = () => {
             <h3 className="ai-derm__cta-title">Ready to get your AI skin analysis?</h3>
             <p className="ai-derm__cta-sub">No sign-up required. Just upload your image and get results instantly.</p>
           </div>
-          <a href="#" className="btn-primary" id="ai-derm-cta-btn">
+          <Link to="/analyze" className="btn-primary" id="ai-derm-cta-btn">
             Start Free Analysis
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

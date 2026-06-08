@@ -19,6 +19,9 @@ import FAQs from './components/FAQs';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
+/* Analysis workflow */
+import SkinAnalysis from './pages/SkinAnalysis';
+
 import './App.css';
 
 /* ── Landing page ── */
@@ -51,6 +54,7 @@ function App() {
 
         <Route path="/login"    element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/analyze"  element={<SkinAnalysis />} />
 
         {/* Placeholder dashboard */}
         <Route path="/dashboard" element={

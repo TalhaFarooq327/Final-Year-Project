@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 
 /* ── animated scan dot that appears on the skin image ── */
@@ -138,12 +139,12 @@ const Hero = () => {
           </p>
 
           <div className="hero__cta">
-            <a href="#" className="btn-primary hero__cta-btn" id="hero-try-now-btn">
+            <Link to="/analyze" className="btn-primary hero__cta-btn" id="hero-try-now-btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path d="M5 3l14 9-14 9V3z" fill="white" />
               </svg>
               Analyze My Skin — Free
-            </a>
+            </Link>
             <a
               href="#how-it-works"
               className="btn-secondary hero__cta-learn"
