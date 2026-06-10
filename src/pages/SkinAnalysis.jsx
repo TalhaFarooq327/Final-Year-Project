@@ -25,12 +25,12 @@ const STATUS_MESSAGES = [
 ];
 
 const CHECKLIST = [
-  { id: 'scan',     label: 'Scanning skin surface',      icon: '🔍' },
-  { id: 'acne',     label: 'Detecting acne & lesions',   icon: '🧪' },
-  { id: 'tone',     label: 'Evaluating skin tone',       icon: '🎨' },
-  { id: 'texture',  label: 'Checking skin texture',      icon: '📊' },
-  { id: 'classify', label: 'Running AI classifier',      icon: '🤖' },
-  { id: 'report',   label: 'Generating report',          icon: '📄' },
+  { id: 'scan', label: 'Scanning skin surface', icon: '🔍' },
+  { id: 'acne', label: 'Detecting acne & lesions', icon: '🧪' },
+  { id: 'tone', label: 'Evaluating skin tone', icon: '🎨' },
+  { id: 'texture', label: 'Checking skin texture', icon: '📊' },
+  { id: 'classify', label: 'Running AI classifier', icon: '🤖' },
+  { id: 'report', label: 'Generating report', icon: '📄' },
 ];
 
 /* ─────────────────────────────────────
@@ -48,7 +48,7 @@ const Steps = ({ current }) => {
               <div className={`sa-step__dot sa-step__dot--${state}`}>
                 {state === 'done' ? (
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 ) : (
                   i + 1
@@ -94,12 +94,7 @@ const UploadStep = ({ onContinue }) => {
   return (
     <>
       <div className="sa-header">
-        <div className="sa-header__badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L3 7V12C3 16.55 6.84 20.74 12 22C17.16 20.74 21 16.55 21 12V7L12 2Z"/>
-          </svg>
-          AI Skin Analysis
-        </div>
+
         <h1 className="sa-header__title">
           Upload Your <span>Skin Image</span>
         </h1>
@@ -128,10 +123,10 @@ const UploadStep = ({ onContinue }) => {
             onClick={() => fileRef.current?.click()}
           >
             <div className="sa-dropzone__icon-wrap">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" className="sa-dropzone__icon" style={{color:'#63B3ED'}}>
-                <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M17 8L12 3L7 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 3V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" className="sa-dropzone__icon" style={{ color: '#63B3ED' }}>
+                <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M17 8L12 3L7 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M12 3V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
 
@@ -144,9 +139,9 @@ const UploadStep = ({ onContinue }) => {
               id="upload-from-device-btn"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M17 8L12 3L7 8" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 3V15" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M17 8L12 3L7 8" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M12 3V15" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               Upload from Device
             </button>
@@ -161,7 +156,7 @@ const UploadStep = ({ onContinue }) => {
             <div className="sa-preview__overlay">
               <div className="sa-preview__badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 Image ready for analysis
               </div>
@@ -178,9 +173,9 @@ const UploadStep = ({ onContinue }) => {
 
         <div className="sa-upload-footer">
           <div className="sa-upload-tips">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{color:'#63B3ED'}}>
-              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-              <path d="M12 16v-4M12 8h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ color: '#63B3ED' }}>
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+              <path d="M12 16v-4M12 8h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
             <span>Ensure good lighting and clear focus for accurate results</span>
           </div>
@@ -193,7 +188,7 @@ const UploadStep = ({ onContinue }) => {
           >
             Continue
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
@@ -246,12 +241,7 @@ const ProcessingStep = ({ onComplete }) => {
   return (
     <>
       <div className="sa-header">
-        <div className="sa-header__badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="12" r="10" opacity="0.2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-          </svg>
-          Processing
-        </div>
+
         <h1 className="sa-header__title">
           Analyzing Your <span>Skin</span>
         </h1>
@@ -266,11 +256,11 @@ const ProcessingStep = ({ onComplete }) => {
           <svg className="sa-loader-svg" viewBox="0 0 200 200">
             <defs>
               <linearGradient id="sa-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#3182CE"/>
-                <stop offset="100%" stopColor="#0BC5EA"/>
+                <stop offset="0%" stopColor="#3182CE" />
+                <stop offset="100%" stopColor="#0BC5EA" />
               </linearGradient>
             </defs>
-            <circle className="sa-loader-track" cx="100" cy="100" r="90"/>
+            <circle className="sa-loader-track" cx="100" cy="100" r="90" />
             <circle
               className="sa-loader-fill"
               cx="100" cy="100" r="90"
@@ -310,20 +300,20 @@ const ProcessingStep = ({ onComplete }) => {
                 <div className={`sa-check-icon sa-check-icon--${state}`}>
                   {state === 'done' ? (
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   ) : state === 'active' ? (
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4" stroke="white" strokeWidth="2" strokeLinecap="round" />
                     </svg>
                   ) : (
-                    <span style={{opacity:0}}>·</span>
+                    <span style={{ opacity: 0 }}>·</span>
                   )}
                 </div>
                 <span className="sa-check-text">{item.label}</span>
                 {state === 'active' && (
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{marginLeft:'auto',color:'#63B3ED',animation:'saSpin 1.4s linear infinite'}}>
-                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ marginLeft: 'auto', color: '#63B3ED', animation: 'saSpin 1.4s linear infinite' }}>
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 )}
               </div>
@@ -386,12 +376,7 @@ Please consult a licensed dermatologist for professional medical advice.
   return (
     <>
       <div className="sa-header">
-        <div className="sa-header__badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M5 13l4 4L19 7"/>
-          </svg>
-          Analysis Complete
-        </div>
+
         <h1 className="sa-header__title">
           Your <span>Results</span> Are Ready
         </h1>
@@ -426,15 +411,15 @@ Please consult a licensed dermatologist for professional medical advice.
             <svg className="sa-conf-ring-svg" viewBox="0 0 160 160">
               <defs>
                 <linearGradient id="sa-red-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#EF4444"/>
-                  <stop offset="100%" stopColor="#F97316"/>
+                  <stop offset="0%" stopColor="#EF4444" />
+                  <stop offset="100%" stopColor="#F97316" />
                 </linearGradient>
                 <linearGradient id="sa-green-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#38A169"/>
-                  <stop offset="100%" stopColor="#0BC5EA"/>
+                  <stop offset="0%" stopColor="#38A169" />
+                  <stop offset="100%" stopColor="#0BC5EA" />
                 </linearGradient>
               </defs>
-              <circle className="sa-conf-track" cx="80" cy="80" r={radius}/>
+              <circle className="sa-conf-track" cx="80" cy="80" r={radius} />
               <circle
                 className={`sa-conf-fill sa-conf-fill--${variant}`}
                 cx="80" cy="80" r={radius}
@@ -454,11 +439,11 @@ Please consult a licensed dermatologist for professional medical advice.
           <div className="sa-conf-info">
             <h3>Confidence Score</h3>
             <p>
-              The AI model is <strong style={{color:'white'}}>{pct}% confident</strong> in
+              The AI model is <strong style={{ color: 'white' }}>{pct}% confident</strong> in
               this prediction. Scores above 85% indicate high model certainty.
               This is based on pattern matching across 60,000+ dermatology images.
             </p>
-            <div className="sa-conf-meter" style={{marginTop:16}}>
+            <div className="sa-conf-meter" style={{ marginTop: 16 }}>
               <div
                 className={`sa-conf-meter-fill sa-conf-meter-fill--${variant}`}
                 style={{ width: animated ? `${pct}%` : '0%' }}
@@ -471,7 +456,7 @@ Please consult a licensed dermatologist for professional medical advice.
         <div className="sa-assessment-card">
           <h3>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             AI Assessment Summary
           </h3>
@@ -503,13 +488,13 @@ Please consult a licensed dermatologist for professional medical advice.
             </div>
             <div className="sa-assess-item">
               <div className="sa-assess-label">Analysis Time</div>
-              <div className="sa-assess-value" style={{color:'rgba(255,255,255,0.75)'}}>
+              <div className="sa-assess-value" style={{ color: 'rgba(255,255,255,0.75)' }}>
                 {result.analysisTime}
               </div>
             </div>
             <div className="sa-assess-item">
               <div className="sa-assess-label">AI Model</div>
-              <div className="sa-assess-value" style={{color:'rgba(255,255,255,0.75)'}}>
+              <div className="sa-assess-value" style={{ color: 'rgba(255,255,255,0.75)' }}>
                 {result.modelVersion}
               </div>
             </div>
@@ -536,8 +521,8 @@ Please consult a licensed dermatologist for professional medical advice.
             id="analyze-another-btn"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M1 4v6h6M23 20v-6h-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M1 4v6h6M23 20v-6h-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             Analyze Another Image
           </button>
@@ -548,7 +533,7 @@ Please consult a licensed dermatologist for professional medical advice.
             id="download-report-btn"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             Download Report
           </button>
@@ -559,8 +544,8 @@ Please consult a licensed dermatologist for professional medical advice.
             id="save-results-btn"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M17 21v-8H7v8M7 3v5h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M17 21v-8H7v8M7 3v5h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             Save Results
           </button>
@@ -578,9 +563,9 @@ const SkinAnalysis = () => {
   const [step, setStep] = useState(0); // 0=upload 1=processing 2=results
   const navigate = useNavigate();
 
-  const handleContinue  = () => setStep(1);
-  const handleComplete  = () => setStep(2);
-  const handleReset     = () => setStep(0);
+  const handleContinue = () => setStep(1);
+  const handleComplete = () => setStep(2);
+  const handleReset = () => setStep(0);
 
   return (
     <div className="sa-page">
