@@ -27,8 +27,15 @@ const Register = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const [formData, setFormData] = useState({
-    fullName: '', email: '', password: '', confirmPassword: '',
+  const [role, setRole]           = useState('user'); // 'user' | 'doctor'
+  const [formData, setFormData]   = useState({
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    specialization: 'Dermatology',
+    licenseNo: '',
+    hospital: '',
   });
   const [errors, setErrors]       = useState({});
   const [showPass, setShowPass]   = useState(false);
@@ -49,6 +56,16 @@ const Register = () => {
       e.email = 'Email address is required.';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       e.email = 'Please enter a valid email address.';
+    
+    if (role === 'doctor') {
+      if (!formData.specialization.trim())
+        e.specialization = 'Specialization is required.';
+      if (!formData.licenseNo.trim())
+        e.licenseNo = 'License number is required.';
+      if (!formData.hospital.trim())
+        e.hospital = 'Hospital/clinic affiliation is required.';
+    }
+
     if (!formData.password)
       e.password = 'Password is required.';
     else if (formData.password.length < 8)
@@ -77,14 +94,20 @@ const Register = () => {
     setLoading(true);
     setApiError('');
 
-    /* TODO: replace with real Flask API call
+    /* TODO: replace with real Flask/Supabase API call
        const res = await fetch('/api/auth/register', {
          method: 'POST',
          headers: { 'Content-Type': 'application/json' },
          body: JSON.stringify({
+           role,
            full_name: formData.fullName,
            email:     formData.email,
            password:  formData.password,
+           ...(role === 'doctor' && {
+             specialization: formData.specialization,
+             license_no:     formData.licenseNo,
+             hospital:       formData.hospital,
+           })
          }),
        });
        const data = await res.json();
@@ -94,8 +117,19 @@ const Register = () => {
     await new Promise(r => setTimeout(r, 1800)); // simulate network
     setLoading(false);
     setSuccess(true);
-    login('user'); // auto-login after registration
-    setTimeout(() => navigate('/dashboard'), 2800);
+
+    const customData = role === 'doctor' ? {
+      name: formData.fullName,
+      email: formData.email,
+      specialization: formData.specialization,
+      licenseNo: formData.licenseNo,
+      hospital: formData.hospital,
+    } : {
+      name: formData.fullName,
+      email: formData.email,
+    };
+    login(role, customData); // auto-login after registration
+    setTimeout(() => navigate(role === 'doctor' ? '/doctor/dashboard' : '/dashboard'), 2800);
   };
 
   /* ─── Success Screen ─── */
@@ -106,19 +140,26 @@ const Register = () => {
           <div className="auth-success-card">
             <div className="auth-success-icon">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="11" fill="#38A169" fillOpacity="0.12" stroke="#38A169" strokeWidth="1.5"/>
-                <path d="M7 12.5l3.5 3.5 6.5-7" stroke="#38A169" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="12" cy="12" r="11" fill={role === 'user' ? '#38A169' : '#3182CE'} fillOpacity="0.12" stroke={role === 'user' ? '#38A169' : '#3182CE'} strokeWidth="1.5"/>
+                <path d="M7 12.5l3.5 3.5 6.5-7" stroke={role === 'user' ? '#38A169' : '#3182CE'} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <div className="auth-success-ring auth-success-ring--1"></div>
-              <div className="auth-success-ring auth-success-ring--2"></div>
+              <div className="auth-success-ring auth-success-ring--1" style={{ borderColor: role === 'user' ? 'rgba(56, 161, 105, 0.25)' : 'rgba(49, 130, 206, 0.25)' }}></div>
+              <div className="auth-success-ring auth-success-ring--2" style={{ borderColor: role === 'user' ? 'rgba(56, 161, 105, 0.25)' : 'rgba(49, 130, 206, 0.25)' }}></div>
             </div>
             <h2 className="auth-success-title">Account Created!</h2>
             <p className="auth-success-desc">
-              Welcome to Psoriasis AI, <strong>{formData.fullName.split(' ')[0]}</strong>!<br />
-              Redirecting you to sign in…
+              Welcome to Psoriasis AI, <strong>{role === 'doctor' && !formData.fullName.startsWith('Dr.') ? 'Dr. ' : ''}{formData.fullName.split(' ')[0]}</strong>!<br />
+              Redirecting you to your dashboard…
             </p>
             <div className="auth-success-progress">
-              <div className="auth-success-progress__bar"></div>
+              <div
+                className="auth-success-progress__bar"
+                style={{
+                  background: role === 'user'
+                    ? 'linear-gradient(90deg, #38A169, #68D391)'
+                    : 'linear-gradient(90deg, #3182CE, #63B3ED)'
+                }}
+              ></div>
             </div>
           </div>
         </div>
@@ -130,21 +171,36 @@ const Register = () => {
   return (
     <div className="auth-page register-page">
       {/* ── Left Panel ── */}
-      <div className="auth-panel auth-panel--left auth-panel--green">
+      <div className={`auth-panel auth-panel--left ${role === 'user' ? 'auth-panel--green' : ''}`}>
         <div className="auth-panel__inner">
           <AuthIllustration variant="register" />
 
           <div className="auth-panel__copy">
-            <h1 className="auth-panel__title">Join Psoriasis AI</h1>
+            <h1 className="auth-panel__title">
+              {role === 'user' ? 'Join Psoriasis AI' : 'For Dermatologists'}
+            </h1>
             <p className="auth-panel__desc">
-              Create an account to track your psoriasis assessments and access your full analysis history.
+              {role === 'user'
+                ? 'Create an account to track your psoriasis assessments and access your full analysis history.'
+                : 'Provide virtual assessments, review AI predictions, and manage your patients with ease.'
+              }
             </p>
           </div>
 
           <div className="auth-panel__badges">
-            <span className="auth-badge"><span className="auth-badge__dot auth-badge__dot--green"></span>Free to Start</span>
-            <span className="auth-badge"><span className="auth-badge__dot auth-badge__dot--blue"></span>AI-Powered Reports</span>
-            <span className="auth-badge"><span className="auth-badge__dot auth-badge__dot--teal"></span>Dermatologist Insights</span>
+            {role === 'user' ? (
+              <>
+                <span className="auth-badge"><span className="auth-badge__dot auth-badge__dot--green"></span>Free to Start</span>
+                <span className="auth-badge"><span className="auth-badge__dot auth-badge__dot--blue"></span>AI-Powered Reports</span>
+                <span className="auth-badge"><span className="auth-badge__dot auth-badge__dot--teal"></span>Dermatologist Insights</span>
+              </>
+            ) : (
+              <>
+                <span className="auth-badge"><span className="auth-badge__dot auth-badge__dot--green"></span>Patient Dashboard</span>
+                <span className="auth-badge"><span className="auth-badge__dot auth-badge__dot--blue"></span>AI Verification</span>
+                <span className="auth-badge"><span className="auth-badge__dot auth-badge__dot--teal"></span>Streamlined Reviews</span>
+              </>
+            )}
           </div>
         </div>
         <div className="auth-blob auth-blob--1" aria-hidden="true"></div>
@@ -156,7 +212,29 @@ const Register = () => {
         <div className="auth-form-wrapper">
           <div className="auth-form-header">
             <h2 className="auth-form-title">Create Account</h2>
-            <p className="auth-form-sub">Start your skin health journey today</p>
+            <p className="auth-form-sub">
+              {role === 'user' ? 'Start your skin health journey today' : 'Access clinical tools and verify patient insights'}
+            </p>
+          </div>
+
+          {/* ── Role toggle ── */}
+          <div className="auth-role-toggle">
+            <button
+              type="button"
+              className={`auth-role-btn ${role === 'user' ? 'auth-role-btn--active' : ''}`}
+              onClick={() => setRole('user')}
+              id="role-user-btn"
+            >
+              👤 Patient
+            </button>
+            <button
+              type="button"
+              className={`auth-role-btn ${role === 'doctor' ? 'auth-role-btn--active' : ''}`}
+              onClick={() => setRole('doctor')}
+              id="role-doctor-btn"
+            >
+              🩺 Doctor
+            </button>
           </div>
 
           {apiError && (
@@ -174,7 +252,7 @@ const Register = () => {
               value={formData.fullName}
               onChange={handleChange('fullName')}
               error={errors.fullName}
-              placeholder="Dr. Jane Doe"
+              placeholder={role === 'user' ? 'Ahmed Khan' : 'Dr. Sarah Malik'}
               autoComplete="name"
               icon={
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="1.8"/></svg>
@@ -194,6 +272,50 @@ const Register = () => {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
               }
             />
+
+            {/* Doctor-specific fields */}
+            {role === 'doctor' && (
+              <div className="role-specific-fields">
+                <FormInput
+                  id="reg-specialization"
+                  label="Specialization"
+                  type="text"
+                  value={formData.specialization}
+                  onChange={handleChange('specialization')}
+                  error={errors.specialization}
+                  placeholder="e.g. Dermatology"
+                  icon={
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  }
+                />
+
+                <FormInput
+                  id="reg-licenseno"
+                  label="Medical License Number"
+                  type="text"
+                  value={formData.licenseNo}
+                  onChange={handleChange('licenseNo')}
+                  error={errors.licenseNo}
+                  placeholder="e.g. PMC-48291"
+                  icon={
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  }
+                />
+
+                <FormInput
+                  id="reg-hospital"
+                  label="Hospital / Clinic Affiliation"
+                  type="text"
+                  value={formData.hospital}
+                  onChange={handleChange('hospital')}
+                  error={errors.hospital}
+                  placeholder="e.g. Shifa International Hospital"
+                  icon={
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="1.8"/></svg>
+                  }
+                />
+              </div>
+            )}
 
             <div className="form-field-group">
               <FormInput
@@ -280,12 +402,12 @@ const Register = () => {
 
             <button
               type="submit"
-              className={`auth-btn auth-btn--register ${loading ? 'auth-btn--loading' : ''}`}
+              className={`auth-btn ${role === 'user' ? 'auth-btn--register' : 'auth-btn--primary'} ${loading ? 'auth-btn--loading' : ''}`}
               disabled={loading}
               id="register-submit-btn"
             >
               {loading
-                ? <><span className="auth-spinner auth-spinner--green"></span>Creating account…</>
+                ? <><span className={`auth-spinner ${role === 'user' ? 'auth-spinner--green' : ''}`}></span>Creating account…</>
                 : <><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2"/><line x1="19" y1="8" x2="19" y2="14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><line x1="22" y1="11" x2="16" y2="11" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>Create Account</>
               }
             </button>

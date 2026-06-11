@@ -13,11 +13,11 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   /* ── Login (mock) ── */
-  const login = useCallback((role = 'user') => {
+  const login = useCallback((role = 'user', customData = null) => {
     if (role === 'doctor') {
-      setUser({ ...MOCK_DOCTOR });
+      setUser({ ...MOCK_DOCTOR, ...customData, role: 'doctor' });
     } else {
-      setUser({ ...MOCK_USER });
+      setUser({ ...MOCK_USER, ...customData, role: 'user' });
     }
   }, []);
 
