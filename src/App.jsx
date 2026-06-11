@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
 
 /* Shared */
 import Navbar from './components/Navbar';
@@ -22,6 +23,20 @@ import Register from './pages/Register';
 /* Analysis workflow */
 import SkinAnalysis from './pages/SkinAnalysis';
 
+/* User dashboard pages */
+import UserDashboard from './pages/user/UserDashboard';
+import AnalysisHistory from './pages/user/AnalysisHistory';
+import DoctorReviews from './pages/user/DoctorReviews';
+import UserProfile from './pages/user/UserProfile';
+
+/* Doctor dashboard pages */
+import DoctorDashboard from './pages/doctor/DoctorDashboard';
+import Patients from './pages/doctor/Patients';
+import PendingReviews from './pages/doctor/PendingReviews';
+import ReviewDetail from './pages/doctor/ReviewDetail';
+import ReviewHistory from './pages/doctor/ReviewHistory';
+import DoctorProfile from './pages/doctor/DoctorProfile';
+
 import './App.css';
 
 /* ── Landing page ── */
@@ -38,13 +53,41 @@ const LandingPage = () => (
   </main>
 );
 
-function App() {
+/* ── Protected route — redirect to login if not authenticated ── */
+const ProtectedRoute = ({ children, requireRole }) => {
+  const { isAuthenticated, isDoctor, isUser } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (requireRole === 'doctor' && !isDoctor) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  if (requireRole === 'user' && !isUser) {
+    return <Navigate to="/doctor/dashboard" replace />;
+  }
+
+  return children;
+};
+
+/* ── Smart /dashboard redirect: user → /dashboard, doctor → /doctor/dashboard ── */
+const DashboardRedirect = () => {
+  const { isAuthenticated, isDoctor } = useAuth();
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (isDoctor) return <Navigate to="/doctor/dashboard" replace />;
+  return <Navigate to="/dashboard" replace />;
+};
+
+function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       {/* Navbar is OUTSIDE Routes — always visible on every page */}
       <Navbar />
 
       <Routes>
+        {/* ── Landing ── */}
         <Route path="/" element={
           <div className="app">
             <LandingPage />
@@ -52,52 +95,88 @@ function App() {
           </div>
         } />
 
+        {/* ── Auth ── */}
         <Route path="/login"    element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/analyze"  element={<SkinAnalysis />} />
 
-        {/* Placeholder dashboard */}
-        <Route path="/dashboard" element={
-          <div style={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontFamily: 'Inter, sans-serif',
-            flexDirection: 'column',
-            gap: 16,
-            background: '#F7FAFC',
-            paddingTop: 80,
-          }}>
-            <div style={{
-              background: 'white',
-              borderRadius: 20,
-              padding: '48px 56px',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-              textAlign: 'center',
-              border: '1px solid #E2E8F0',
-            }}>
-              <div style={{ fontSize: 48, marginBottom: 16 }}>🎉</div>
-              <h1 style={{ fontSize: 26, fontWeight: 800, color: '#1A202C', margin: '0 0 8px' }}>
-                Welcome to Psoriasis AI
-              </h1>
-              <p style={{ color: '#718096', fontSize: 15, margin: '0 0 24px' }}>
-                Dashboard coming soon — connect your Flask backend to get started.
-              </p>
-              <a href="/login" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: 'linear-gradient(135deg,#3182CE,#2563EB)',
-                color: 'white', padding: '12px 28px', borderRadius: 12,
-                fontWeight: 600, fontSize: 14, textDecoration: 'none',
-                boxShadow: '0 4px 14px rgba(49,130,206,0.38)',
-              }}>
-                ← Back to Login
-              </a>
-            </div>
-          </div>
+        {/* ── Skin Analysis (protected) ── */}
+        <Route path="/analyze" element={
+          <ProtectedRoute>
+            <SkinAnalysis />
+          </ProtectedRoute>
         } />
+
+        {/* ── Smart redirect from /go or old /dashboard placeholder ── */}
+        <Route path="/go" element={<DashboardRedirect />} />
+
+        {/* ════ USER DASHBOARD ROUTES ════ */}
+        <Route path="/dashboard" element={
+          <ProtectedRoute requireRole="user">
+            <UserDashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/dashboard/history" element={
+          <ProtectedRoute requireRole="user">
+            <AnalysisHistory />
+          </ProtectedRoute>
+        } />
+        <Route path="/dashboard/reviews" element={
+          <ProtectedRoute requireRole="user">
+            <DoctorReviews />
+          </ProtectedRoute>
+        } />
+        <Route path="/dashboard/profile" element={
+          <ProtectedRoute requireRole="user">
+            <UserProfile />
+          </ProtectedRoute>
+        } />
+
+        {/* ════ DOCTOR DASHBOARD ROUTES ════ */}
+        <Route path="/doctor/dashboard" element={
+          <ProtectedRoute requireRole="doctor">
+            <DoctorDashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/doctor/patients" element={
+          <ProtectedRoute requireRole="doctor">
+            <Patients />
+          </ProtectedRoute>
+        } />
+        <Route path="/doctor/pending-reviews" element={
+          <ProtectedRoute requireRole="doctor">
+            <PendingReviews />
+          </ProtectedRoute>
+        } />
+        <Route path="/doctor/review/:id" element={
+          <ProtectedRoute requireRole="doctor">
+            <ReviewDetail />
+          </ProtectedRoute>
+        } />
+        <Route path="/doctor/review-history" element={
+          <ProtectedRoute requireRole="doctor">
+            <ReviewHistory />
+          </ProtectedRoute>
+        } />
+        <Route path="/doctor/profile" element={
+          <ProtectedRoute requireRole="doctor">
+            <DoctorProfile />
+          </ProtectedRoute>
+        } />
+
+        {/* ── Catch-all ── */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

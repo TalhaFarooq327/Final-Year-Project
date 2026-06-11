@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import FormInput from '../components/FormInput';
 import AuthIllustration from '../components/AuthIllustration';
 import './Register.css';
@@ -24,6 +25,7 @@ const getStrength = (pw) => {
 
 const Register = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     fullName: '', email: '', password: '', confirmPassword: '',
@@ -92,8 +94,8 @@ const Register = () => {
     await new Promise(r => setTimeout(r, 1800)); // simulate network
     setLoading(false);
     setSuccess(true);
-
-    setTimeout(() => navigate('/login'), 2800);
+    login('user'); // auto-login after registration
+    setTimeout(() => navigate('/dashboard'), 2800);
   };
 
   /* ─── Success Screen ─── */

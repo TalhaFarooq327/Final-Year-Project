@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import FormInput from '../components/FormInput';
 import AuthIllustration from '../components/AuthIllustration';
 import './Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
@@ -13,6 +15,7 @@ const Login = () => {
   const [remember, setRemember] = useState(false);
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState('');
+  const [role, setRole] = useState('user'); // 'user' | 'doctor'
 
   /* ─── Validation ─── */
   const validate = () => {
@@ -48,9 +51,10 @@ const Login = () => {
        if (!res.ok) { setApiError(data.message); setLoading(false); return; }
     */
 
-    await new Promise(r => setTimeout(r, 1600)); // simulate network
+    await new Promise(r => setTimeout(r, 1000)); // simulate network
+    login(role); // set mock user in AuthContext
     setLoading(false);
-    navigate('/dashboard'); // replace with real post-login route
+    navigate(role === 'doctor' ? '/doctor/dashboard' : '/dashboard');
   };
 
   return (
@@ -85,6 +89,26 @@ const Login = () => {
           <div className="auth-form-header">
             <h2 className="auth-form-title">Sign In</h2>
             <p className="auth-form-sub">Enter your credentials to continue</p>
+          </div>
+
+          {/* ── Role toggle (mock auth only) ── */}
+          <div className="auth-role-toggle">
+            <button
+              type="button"
+              className={`auth-role-btn ${role === 'user' ? 'auth-role-btn--active' : ''}`}
+              onClick={() => setRole('user')}
+              id="role-user-btn"
+            >
+              👤 Patient
+            </button>
+            <button
+              type="button"
+              className={`auth-role-btn ${role === 'doctor' ? 'auth-role-btn--active' : ''}`}
+              onClick={() => setRole('doctor')}
+              id="role-doctor-btn"
+            >
+              🩺 Doctor
+            </button>
           </div>
 
           {apiError && (

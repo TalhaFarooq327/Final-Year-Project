@@ -447,6 +447,40 @@
   }
 }
 
+/* ── Role Toggle ── */
+.auth-role-toggle {
+  display: flex;
+  gap: 8px;
+  background: #EDF2F7;
+  border-radius: 12px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.auth-role-btn {
+  flex: 1;
+  padding: 9px 16px;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: #718096;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.auth-role-btn--active {
+  background: #fff;
+  color: #1A202C;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.auth-role-btn:hover:not(.auth-role-btn--active) {
+  color: #4A5568;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .auth-page {

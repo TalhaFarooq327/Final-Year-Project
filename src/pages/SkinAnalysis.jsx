@@ -16,12 +16,12 @@ const MOCK_RESULT = {
 };
 
 const STATUS_MESSAGES = [
-  'Scanning skin surface…',
-  'Detecting acne & lesions…',
-  'Evaluating skin tone…',
-  'Checking skin texture…',
-  'Running psoriasis classifier…',
-  'Generating report…',
+  'Preprocessing image...',
+  'Enhancing lesion visibility...',
+  'Extracting psoriasis features...',
+  'Running classification model...',
+  'Calculating confidence score...',
+  'Generating diagnostic report...',
 ];
 
 const CHECKLIST = [

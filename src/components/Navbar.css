@@ -121,6 +121,10 @@
   color: var(--text-muted);
   border-radius: var(--radius-full);
   transition: var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .navbar__login:hover {
@@ -142,6 +146,187 @@
 .navbar__register:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(49, 130, 206, 0.4);
+}
+
+/* ══════════════════════
+   PROFILE AREA (Logged In)
+   ══════════════════════ */
+.navbar__profile-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.navbar__dash-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+
+.navbar__dash-link:hover {
+  color: var(--primary);
+  background: rgba(49,130,206,0.06);
+}
+
+.navbar__profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px 5px 5px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: white;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.navbar__profile-btn:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 2px 8px rgba(49,130,206,0.12);
+}
+
+.navbar__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+}
+
+.navbar__profile-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar__chevron {
+  color: var(--text-light);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.navbar__chevron--open {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown ── */
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 260px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+  z-index: 1001;
+  animation: navDropIn 0.2s ease;
+}
+
+@keyframes navDropIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.navbar__dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+}
+
+.navbar__dropdown-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbar__dropdown-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.navbar__dropdown-email {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.navbar__dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 0;
+}
+
+.navbar__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-body);
+  text-decoration: none;
+  transition: all 0.15s;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+}
+
+.navbar__dropdown-item svg {
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+
+.navbar__dropdown-item:hover {
+  background: rgba(49,130,206,0.06);
+  color: var(--primary);
+}
+
+.navbar__dropdown-item:hover svg {
+  color: var(--primary);
+}
+
+.navbar__dropdown-item--danger:hover {
+  background: rgba(239,68,68,0.06);
+  color: #E53E3E;
+}
+
+.navbar__dropdown-item--danger:hover svg {
+  color: #E53E3E;
 }
 
 /* Hamburger */
@@ -225,7 +410,8 @@
     display: none;
   }
 
-  .navbar__auth {
+  .navbar__auth,
+  .navbar__profile-area {
     display: none;
   }
 
