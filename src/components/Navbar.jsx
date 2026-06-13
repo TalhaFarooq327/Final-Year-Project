@@ -14,6 +14,7 @@ const Navbar = () => {
 
   const isLanding = location.pathname === '/';
   const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/doctor');
+  const isAnalyze = location.pathname === '/analyze';
 
   /* Scroll listener */
   useEffect(() => {
@@ -76,7 +77,7 @@ const Navbar = () => {
   const dashboardPath = isDoctor ? '/doctor/dashboard' : '/dashboard';
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled && !isAnalyze ? 'navbar--scrolled' : ''} ${isAnalyze ? 'navbar--absolute' : ''}`}>
       <div className="navbar__container">
 
         {/* Logo → always goes to landing page */}
